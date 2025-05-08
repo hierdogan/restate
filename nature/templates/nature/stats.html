@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block title %}İstatistikler{% endblock %}
+
+{% block content %}
+<h1>İstatistikler</h1>
+<ul>
+    <li><strong>Toplam ev:</strong> {{ total_properties }}</li>
+    <li><strong>Satılan ev sayısı:</strong> {{ total_sales }}</li>
+    <li><strong>Kiralanan ev sayısı:</strong> {{ total_rentals }}</li>
+    <li><strong>Ortalama satış fiyatı:</strong> {{ avg_sale_price|default:"Veri yok" }}</li>
+    <li><strong>Ortalama kira fiyatı:</strong> {{ avg_rent_price|default:"Veri yok" }}</li>
+</ul>
+{% endblock %}
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>İstatistikler</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>İstatistikler</h1>-->
+
+<!--    <ul>-->
+<!--        <li><strong>Toplam ev:</strong> {{ total_properties }}</li>-->
+<!--        <li><strong>Satılan ev sayısı:</strong> {{ total_sales }}</li>-->
+<!--        <li><strong>Kiralanan ev sayısı:</strong> {{ total_rentals }}</li>-->
+<!--        <li><strong>Ortalama satış fiyatı:</strong> {{ avg_sale_price|default:"Veri yok" }}</li>-->
+<!--        <li><strong>Ortalama kira fiyatı:</strong> {{ avg_rent_price|default:"Veri yok" }}</li>-->
+<!--    </ul>-->
+
+<!--    <a href="{% url 'property_list' %}">← Geri dön</a>-->
+<!--</body>-->
+<!--</html>-->

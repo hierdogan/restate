@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}{{ user.full_name }}{% endblock %}
+
+{% block content %}
+<h1>{{ user.full_name }}</h1>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p><strong>Telefon:</strong> {{ user.phone }}</p>
+<p><strong>Tip:</strong> {{ user.user_type }}</p>
+
+<hr>
+<h2>🏠 Sahip Olduğu Evler</h2>
+<ul>
+{% for ownership in owned_properties %}
+    <li>{{ ownership.property }} ({{ ownership.ownership_start_date }} - {{ ownership.ownership_end_date|default:"devam ediyor" }})</li>
+{% empty %}
+    <li>Aktif mülkiyet bulunmuyor.</li>
+{% endfor %}
+</ul>
+
+<hr>
+<h2>🛒 Satın Aldığı Evler</h2>
+<ul>
+{% for sale in sales %}
+    <li>{{ sale.property }} – {{ sale.sale_price }} ₺</li>
+{% empty %}
+    <li>Satın alınan ev yok.</li>
+{% endfor %}
+</ul>
+
+<hr>
+<h2>💸 Kiraladığı Evler</h2>
+<ul>
+{% for rental in rentals %}
+    <li>{{ rental.property }} ({{ rental.start_date }} - {{ rental.end_date|default:"devam ediyor" }})</li>
+{% empty %}
+    <li>Kiralama geçmişi bulunmuyor.</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'property_list' %}" class="button">← Tüm Evler</a>
+{% endblock %}

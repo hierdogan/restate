@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Kullanıcılar{% endblock %}
+
+{% block content %}
+<h1>Kullanıcılar</h1>
+
+<ul>
+{% for user in users %}
+    <li>
+        <strong>
+          <a href="{% url 'user_detail' user.id %}"><strong>{{ user.full_name }}
+        </strong></a>
+        </strong>
+    </li>
+{% empty %}
+    <li>Henüz kullanıcı yok.</li>
+{% endfor %}
+</ul>
+{% endblock %}

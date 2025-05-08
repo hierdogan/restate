@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}İşlem Geçmişi{% endblock %}
+
+{% block content %}
+<h2>📚 İşlem Geçmişi</h2>
+
+<h3>💰 Satış İşlemleri</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Ev</th>
+            <th>Alıcı</th>
+            <th>Satış Fiyatı</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for sale in sales %}
+        <tr>
+            <td>{{ sale.property }}</td>
+            <td><a href="{% url 'user_detail' sale.buyer.id %}">{{ sale.buyer }}</a></td>
+            <td>{{ sale.sale_price }}₺</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="3">Henüz satış işlemi yok.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+
+<h3>📄 Kiralama İşlemleri</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Ev</th>
+            <th>Kiracı</th>
+            <th>Kira Bedeli</th>
+            <th>Başlangıç Tarihi</th>
+            <th>Bitiş Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for rental in rentals %}
+        <tr>
+            <td>{{ rental.property }}</td>
+            <td><a href="{% url 'user_detail' rental.tenant.id %}">{{ rental.tenant }}</a></td>
+            <td>{{ rental.rent_price }}₺</td>
+            <td>{{ rental.start_date }}</td>
+            <td>{{ rental.end_date|default:"Devam ediyor" }}</td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="5">Henüz kiralama işlemi yok.</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

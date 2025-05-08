@@ -1,0 +1,28 @@
+
+{% extends "base.html" %}
+
+{% block title %}Kiralama Ekle{% endblock %}
+
+{% block content %}
+<h1>Yeni Kiralama İşlemi</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Kaydet</button>
+</form>
+{% endblock %}
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head><title>Kiralama Ekle</title></head>-->
+<!--<body>-->
+<!--<h1>Yeni Kiralama İşlemi</h1>-->
+<!--<form method="POST">-->
+<!--    {% csrf_token %}-->
+<!--    {{ form.as_p }}-->
+<!--    <button type="submit">Kaydet</button>-->
+<!--</form>-->
+<!--<a href="{% url 'property_list' %}">← Geri dön</a>-->
+<!--</body>-->
+<!--</html>-->

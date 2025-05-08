@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Ev Sil{% endblock %}
+
+{% block content %}
+<h1>Ev Sil</h1>
+
+<p><strong>{{ property }}</strong> kaydını silmek istediğinize emin misiniz?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="button">Evet, Sil</button>
+</form>
+
+<a href="{% url 'property_list' %}" class="button">← Vazgeç</a>
+{% endblock %}

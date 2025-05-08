@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Ev Detayı{% endblock %}
+
+{% block content %}
+<h1>{{ property.address }} – {{ property.square_meters }} m²</h1>
+<p><strong>Açıklama:</strong> {{ property.description }}</p>
+<p><strong>Oda Sayısı:</strong> {{ property.room_count }}</p>
+<p><strong>Isınma:</strong> {{ property.heating_type }}</p>
+<p><strong>Adres Kodu:</strong> {{ property.adres_kodu }}</p>
+<p><strong>Güncel Sahibi:</strong> {{ property.current_owner }}</p>
+
+<a href="{% url 'property_list' %}" class="button">← Tüm Evler</a>
+
+<hr>
+<h2>📜 Sahiplik Geçmişi</h2>
+<ul>
+{% for o in ownerships %}
+    <li>
+        {{ o.owner.full_name }}: {{ o.ownership_start_date }} - {{ o.ownership_end_date|default:"devam ediyor" }}
+    </li>
+{% empty %}
+    <li>Hiç sahiplik kaydı bulunamadı.</li>
+{% endfor %}
+</ul>
+
+<hr>
+<h2>🧾 Kiralama Geçmişi</h2>
+<ul>
+{% for item in rental_history %}
+    <li>
+        {{ item.rental.tenant.full_name }}:
+        {{ item.rental.start_date }} - {{ item.rental.end_date|default:"devam ediyor" }}
+        {% if item.gap_days %}
+            <br><small>↑ Önceki kiralamadan {{ item.gap_days }} gün sonra başlamış</small>
+        {% endif %}
+    </li>
+{% empty %}
+    <li>Hiç kiralama kaydı bulunamadı.</li>
+{% endfor %}
+</ul>
+{% endblock %}

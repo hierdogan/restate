@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Ev Ekle / Güncelle{% endblock %}
+
+{% block content %}
+<h1>Ev Ekle / Güncelle</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="button">Kaydet</button>
+</form>
+
+<a href="{% url 'property_list' %}" class="button">← Tüm Evler</a>
+{% endblock %}

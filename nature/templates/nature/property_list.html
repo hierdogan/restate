@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Tüm Evler{% endblock %}
+
+{% block content %}
+<h1>Tüm Evler</h1>
+
+<a href="{% url 'property_create' %}" class="button">➕ Yeni Ev Ekle</a>
+
+<ul>
+    {% for property in properties %}
+        <li>
+            <a href="{% url 'property_detail' property.id %}">
+                {{ property.address }} – {{ property.square_meters }} m²
+            </a>
+        </li>
+    {% empty %}
+        <li>Henüz hiç ev kaydı yok.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

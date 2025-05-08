@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Emlak Ofisi{% endblock %}</title>
+    <style>
+        .menu {
+            background-color: #ffffff;
+            padding: 10px 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .menu a {
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 16px;
+            margin-top: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        hr {
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu">
+        <a href="{% url 'property_list' %}">🏠 Tüm Evler</a> |
+        <a href="{% url 'property_create' %}">➕ Yeni Ev Ekle</a> |
+        <a href="{% url 'property_rental_create' %}">📄 Yeni Kiralama</a> |
+        <a href="{% url 'property_sale_create' %}">💰 Yeni Satış</a> |
+        <a href="{% url 'user_list' %}">👥 Kullanıcılar</a> | <!-- Yeni eklenen satır -->
+        <a href="{% url 'transaction_history' %}">📚 İşlem Geçmişi</a> |
+        <a href="{% url 'stats' %}">📊 İstatistikler</a>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>
